@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MAROTRUCKS compra y vende camiones, tractoras y maquinaria de construcción. Compramos camiones averiados, accidentados y siniestrados en Barcelona, Madrid, Valencia y toda España.">
+  <title>MAROTRUCKS | Compra y venta de camiones y maquinaria en toda España en España</title>
+  <style>
+    :root{
+      --bg:#f7f7f5; --surface:#fff; --text:#171717; --muted:#6b6b67;
+      --line:#e5e5e1; --accent:#d97706; --dark:#20201e; --radius:18px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:var(--bg);color:var(--text);line-height:1.5}
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1120px,92%);margin:auto}
+    header{position:sticky;top:0;z-index:20;background:rgba(247,247,245,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    nav{height:72px;display:flex;align-items:center;justify-content:space-between}
+    .logo{font-weight:900;letter-spacing:-.04em;font-size:1.25rem}
+    .logo span{color:var(--accent)}
+    .navlinks{display:flex;gap:28px;color:#444;font-size:.92rem}
+    .navlinks a:hover{color:var(--text)}
+    .menu{display:none;border:0;background:none;font-size:1.5rem}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 19px;
+      border-radius:12px;font-weight:700;border:1px solid transparent;cursor:pointer;transition:.2s}
+    .btn-dark{background:var(--dark);color:white}.btn-dark:hover{transform:translateY(-1px);opacity:.92}
+    .btn-light{background:white;border-color:var(--line)}.btn-light:hover{border-color:#bbb}
+    .btn-accent{background:var(--accent);color:white}.btn-accent:hover{filter:brightness(.95)}
+    .hero{padding:82px 0 70px}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+    .eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:.75rem;font-weight:800;color:var(--accent);margin-bottom:16px}
+    h1{font-size:clamp(2.7rem,6vw,5.2rem);line-height:.96;letter-spacing:-.065em;max-width:720px}
+    .hero p{font-size:1.12rem;color:var(--muted);max-width:610px;margin:25px 0 30px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-card{min-height:420px;border-radius:28px;overflow:hidden;position:relative;background:
+      linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.45)),
+      url("https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1200&q=85") center/cover}
+    .hero-card .caption{position:absolute;bottom:22px;left:22px;right:22px;color:white}
+    .caption strong{font-size:1.2rem}.caption small{display:block;opacity:.8;margin-top:4px}
+    section{padding:78px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:30px}
+    .section-head h2{font-size:clamp(2rem,4vw,3rem);letter-spacing:-.05em;line-height:1}
+    .section-head p{color:var(--muted);max-width:480px}
+    .categories{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .category{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:25px;min-height:170px;display:flex;flex-direction:column;justify-content:space-between}
+    .category .icon{font-size:1.7rem}.category h3{font-size:1.08rem}.category p{font-size:.88rem;color:var(--muted)}
+    .catalog{background:#efefec}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:white;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+    .card-img{height:210px;background-size:cover;background-position:center}
+    .card-body{padding:20px}
+    .tag{display:inline-block;background:#f2f2ef;border-radius:99px;padding:5px 9px;font-size:.72rem;font-weight:800;margin-bottom:10px}
+    .card h3{font-size:1.15rem;margin-bottom:5px}.specs{color:var(--muted);font-size:.88rem}
+    .price{font-size:1.15rem;font-weight:900;margin:16px 0}.card .btn{width:100%}
+    .buy-section{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .dark-box{background:var(--dark);color:white;border-radius:24px;padding:40px}
+    .dark-box h2{font-size:clamp(2rem,4vw,3.1rem);line-height:1;letter-spacing:-.05em;margin-bottom:18px}
+    .dark-box p{color:#c6c6c2;margin-bottom:25px}
+    .checklist{list-style:none;display:grid;gap:13px}.checklist li::before{content:"✓";color:#f59e0b;font-weight:900;margin-right:10px}
+    .form-box{background:white;border:1px solid var(--line);border-radius:24px;padding:30px}
+    form{display:grid;gap:13px}.two{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+    label{font-size:.78rem;font-weight:700;color:#555}.field{display:grid;gap:6px}
+    input,select,textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px 13px;font:inherit;background:#fafaf8}
+    textarea{min-height:105px;resize:vertical}
+    input:focus,select:focus,textarea:focus{outline:2px solid #f3c58d;border-color:var(--accent)}
+    .notice{font-size:.78rem;color:var(--muted)}
+    .contact{background:white}
+    .contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px}
+    .contact-info{display:grid;gap:18px;margin-top:25px}.contact-item strong{display:block}.contact-item span{color:var(--muted)}
+    footer{background:var(--dark);color:#aaa;padding:30px 0}.footer-row{display:flex;justify-content:space-between;gap:20px;font-size:.85rem}
+    .success{display:none;padding:12px;border-radius:10px;background:#ecfdf3;color:#166534;font-size:.9rem}
+    @media(max-width:850px){
+      .navlinks{display:none}.menu{display:block}.hero-grid,.buy-section,.contact-grid{grid-template-columns:1fr}
+      .hero{padding-top:55px}.hero-card{min-height:320px}.categories{grid-template-columns:1fr 1fr}.cards{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:560px){
+      .categories,.cards,.two{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:12px}
+      section{padding:58px 0}.hero h1{font-size:3rem}.hero-card{min-height:280px}.dark-box,.form-box{padding:24px}
+      .footer-row{display:block}.footer-row div+div{margin-top:8px}
+    }
+  
+    .stock-tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+    .filter{border:1px solid var(--line);background:white;border-radius:999px;padding:9px 15px;font-weight:700;cursor:pointer}
+    .filter.active,.filter:hover{background:var(--dark);color:white}
+    .card-top{position:relative}.status{position:absolute;top:14px;left:14px;background:white;padding:6px 10px;border-radius:99px;font-size:.7rem;font-weight:900}
+    .spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:15px;padding-top:15px;border-top:1px solid var(--line)}
+    .spec-grid div{font-size:.78rem;color:var(--muted)}.spec-grid strong{display:block;color:var(--text);font-size:.84rem}
+    .price-row{display:flex;justify-content:space-between;align-items:center;margin:17px 0}.price-row .price{margin:0}
+    .wa-btn{background:#25D366;color:white!important;border-color:#25D366!important}
+    .floating-wa{position:fixed;right:20px;bottom:20px;z-index:50;background:#25D366;color:white;border-radius:999px;padding:14px 18px;font-weight:900;box-shadow:0 8px 30px rgba(0,0,0,.18)}
+    .trust{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:35px}.trust div{background:white;border:1px solid var(--line);border-radius:14px;padding:16px;font-size:.86rem}.trust strong{display:block;margin-bottom:3px}
+    .cta-strip{background:var(--accent);color:white;padding:28px 0}.cta-strip .row{display:flex;justify-content:space-between;align-items:center;gap:20px}.cta-strip h2{font-size:1.8rem;letter-spacing:-.04em}
+    @media(max-width:650px){.trust{grid-template-columns:1fr}.cta-strip .row{display:block}.cta-strip .btn{margin-top:15px}}
+
+</style>
+<meta name="keywords" content="compra camiones, venta camiones, camiones averiados, camiones accidentados, tractoras, maquinaria de construcción, compra maquinaria, Barcelona, Madrid, Valencia, España">
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav>
+      <a href="#" class="logo">MARO<span>TRUCKS</span></a>
+      <div class="navlinks">
+        <a href="#catalogo">Vehículos</a>
+        <a href="#compramos">Compramos</a>
+        <a href="#vender">Vende el tuyo</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <a href="#vender" class="btn btn-dark">Vender vehículo</a>
+      <button class="menu" aria-label="Menú">☰</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Camiones · maquinaria · vehículos industriales</div>
+        <h1>Compra, vende y recupera valor.</h1>
+        <p>Especialistas en compra y venta de camiones y maquinaria de construcción. Compramos vehículos averiados, accidentados y fuera de servicio en Barcelona, Madrid, Valencia y toda España.</p>
+        <div class="actions">
+          <a class="btn btn-dark" href="#catalogo">Ver vehículos</a>
+          <a class="btn btn-light" href="#vender">Quiero vender</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="caption"><strong>Vehículos industriales seleccionados</strong><small>Stock actualizado · Atención personalizada</small></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="trust">
+      <div><strong>🚛 Compra directa</strong>Valoramos camiones y maquinaria.</div>
+      <div><strong>📍 Toda España</strong>Barcelona · Madrid · Valencia y más.</div>
+      <div><strong>💬 Respuesta rápida</strong>Atención directa por WhatsApp.</div>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>Qué buscamos</h2>
+        <p>Trabajamos con vehículos y maquinaria en diferentes estados, ofreciendo una solución rápida y directa.</p>
+      </div>
+      <div class="categories">
+        <article class="category"><div class="icon">🚛</div><div><h3>Camiones</h3><p>Rígidos, tractoras, volquetes y vehículos industriales.</p></div></article>
+        <article class="category"><div class="icon">🏗️</div><div><h3>Maquinaria</h3><p>Construcción, obra pública y maquinaria industrial.</p></div></article>
+        <article class="category"><div class="icon">🔧</div><div><h3>Averiados</h3><p>Compramos vehículos con averías mecánicas o eléctricas.</p></div></article>
+        <article class="category"><div class="icon">⚠️</div><div><h3>Accidentados</h3><p>Valoramos vehículos siniestrados, con daños parciales o graves.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="catalog" id="catalogo">
+    <div class="container">
+      <div class="section-head">
+        <div><div class="eyebrow">Stock MAROTRUCKS</div><h2>Ejemplos de vehículos y maquinaria que buscamos</h2>
+<div style="margin:16px 0;padding:14px 16px;border:1px solid #e5e7eb;border-radius:12px;background:#f8fafc;font-size:14px;color:#475569">
+<strong>Importante:</strong> Las imágenes y vehículos mostrados son ejemplos orientativos. Para conocer nuestro stock actual o valorar tu camión/maquinaria, contacta con MAROTRUCKS por WhatsApp o teléfono.
+</div>
+</div>
+        <p>Camiones, tractoras y maquinaria de construcción disponibles. Consulta precio, estado y disponibilidad por WhatsApp.</p>
+      </div>
+
+      <div class="stock-tools">
+        <button class="filter active" data-filter="all">Todos</button>
+        <button class="filter" data-filter="camion">Camiones</button>
+        <button class="filter" data-filter="tractora">Tractoras</button>
+        <button class="filter" data-filter="maquinaria">Maquinaria</button>
+        <button class="filter" data-filter="averiado">Averiados</button>
+      </div>
+
+      <div class="cards" id="stock">
+        <article class="card vehicle" data-type="tractora">
+          <div class="card-top"><div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=900&q=85')"></div><span class="status">DISPONIBLE</span></div>
+          <div class="card-body"><span class="tag">TRACTORA</span><h3>Volvo FH 500</h3><div class="specs">Vehículo industrial · Lista para trabajar</div>
+            <div class="spec-grid"><div>Año<strong>2020</strong></div><div>Potencia<strong>500 CV</strong></div><div>Cambio<strong>Automático</strong></div><div>Estado<strong>Muy bueno</strong></div></div>
+            <div class="price-row"><div class="price">Consultar precio</div></div>
+            <a href="https://wa.me/34624805775?text=Hola%20MAROTRUCKS,%20me%20interesa%20el%20Volvo%20FH%20500." target="_blank" rel="noopener" class="btn wa-btn">Consultar por WhatsApp</a>
+          </div>
+        </article>
+
+        <article class="card vehicle" data-type="maquinaria">
+          <div class="card-top"><div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=85')"></div><span class="status">DISPONIBLE</span></div>
+          <div class="card-body"><span class="tag">MAQUINARIA</span><h3>Excavadora de obra</h3><div class="specs">Maquinaria de construcción</div>
+            <div class="spec-grid"><div>Año<strong>2019</strong></div><div>Peso<strong>21 toneladas</strong></div><div>Uso<strong>Construcción</strong></div><div>Estado<strong>Bueno</strong></div></div>
+            <div class="price-row"><div class="price">Consultar precio</div></div>
+            <a href="https://wa.me/34624805775?text=Hola%20MAROTRUCKS,%20me%20interesa%20la%20excavadora." target="_blank" rel="noopener" class="btn wa-btn">Consultar por WhatsApp</a>
+          </div>
+        </article>
+
+        <article class="card vehicle" data-type="camion">
+          <div class="card-top"><div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1565610222536-ef125c59da2e?auto=format&fit=crop&w=900&q=85')"></div><span class="status">DISPONIBLE</span></div>
+          <div class="card-body"><span class="tag">CAMIÓN</span><h3>Camión volquete 6x4</h3><div class="specs">Vehículo industrial · Diésel</div>
+            <div class="spec-grid"><div>Año<strong>2018</strong></div><div>Tracción<strong>6x4</strong></div><div>Combustible<strong>Diésel</strong></div><div>Estado<strong>Bueno</strong></div></div>
+            <div class="price-row"><div class="price">Consultar precio</div></div>
+            <a href="https://wa.me/34624805775?text=Hola%20MAROTRUCKS,%20me%20interesa%20el%20camion%20volquete." target="_blank" rel="noopener" class="btn wa-btn">Consultar por WhatsApp</a>
+          </div>
+        </article>
+
+        <article class="card vehicle" data-type="averiado">
+          <div class="card-top"><div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1592838064575-70ed626d3a0e?auto=format&fit=crop&w=900&q=85')"></div><span class="status">PARA COMPRA</span></div>
+          <div class="card-body"><span class="tag">AVERIADO</span><h3>Camión para reparar</h3><div class="specs">Compramos vehículos en este estado</div>
+            <div class="spec-grid"><div>Valoración<strong>Rápida</strong></div><div>Estado<strong>Averiado</strong></div><div>Recogida<strong>Consultar</strong></div><div>Zona<strong>Toda España</strong></div></div>
+            <div class="price-row"><div class="price">Véndenos el tuyo</div></div>
+            <a href="#vender" class="btn btn-dark">Solicitar valoración</a>
+          </div>
+        </article>
+
+        <article class="card vehicle" data-type="camion">
+          <div class="card-top"><div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d8?auto=format&fit=crop&w=900&q=85')"></div><span class="status">DISPONIBLE</span></div>
+          <div class="card-body"><span class="tag">CAMIÓN</span><h3>Camión rígido</h3><div class="specs">Vehículo industrial · Listo para trabajar</div>
+            <div class="spec-grid"><div>Año<strong>2021</strong></div><div>Tipo<strong>Rígido</strong></div><div>Motor<strong>Diésel</strong></div><div>Estado<strong>Bueno</strong></div></div>
+            <div class="price-row"><div class="price">Consultar precio</div></div>
+            <a href="https://wa.me/34624805775?text=Hola%20MAROTRUCKS,%20me%20interesa%20el%20camion%20rigido." target="_blank" rel="noopener" class="btn wa-btn">Consultar por WhatsApp</a>
+          </div>
+        </article>
+
+        <article class="card vehicle" data-type="maquinaria">
+          <div class="card-top"><div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1580901369227-308f6f40aaca?auto=format&fit=crop&w=900&q=85')"></div><span class="status">DISPONIBLE</span></div>
+          <div class="card-body"><span class="tag">MAQUINARIA</span><h3>Maquinaria de construcción</h3><div class="specs">Equipos para obra y movimiento de tierras</div>
+            <div class="spec-grid"><div>Año<strong>Consultar</strong></div><div>Tipo<strong>Construcción</strong></div><div>Estado<strong>Consultar</strong></div><div>Zona<strong>Toda España</strong></div></div>
+            <div class="price-row"><div class="price">Consultar precio</div></div>
+            <a href="https://wa.me/34624805775?text=Hola%20MAROTRUCKS,%20me%20interesa%20la%20maquinaria." target="_blank" rel="noopener" class="btn wa-btn">Consultar por WhatsApp</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-strip">
+    <div class="container row">
+      <div><h2>¿Tienes un camión o maquinaria para vender?</h2><div>Compramos en Barcelona, Madrid, Valencia y toda España.</div></div>
+      <a class="btn btn-dark" href="#vender">Quiero vender mi vehículo</a>
+    </div>
+  </section>
+
+  <section id="compramos">
+    <div class="container buy-section">
+      <div class="dark-box">
+        <div class="eyebrow">Compra directa</div>
+        <h2>¿Tienes un camión parado?</h2>
+        <p>Cuéntanos qué tienes. Valoramos camiones y maquinaria aunque estén averiados, accidentados o sin posibilidad de circular.</p>
+        <ul class="checklist">
+          <li>Valoración rápida</li><li>Compramos en cualquier estado</li><li>Gestión sencilla y directa</li><li>Posibilidad de recogida</li>
+        </ul>
+      </div>
+      <div class="form-box" id="vender">
+        <h2>Vende tu vehículo</h2>
+        <p class="notice" style="margin:7px 0 20px">Envíanos los datos básicos y nos pondremos en contacto contigo.</p>
+        <form id="sellForm">
+          <div class="two">
+            <div class="field"><label>Nombre</label><input required name="name" placeholder="Tu nombre"></div>
+            <div class="field"><label>Teléfono</label><input required name="phone" placeholder="+34 641 075 341"></div>
+          </div>
+          <div class="two">
+            <div class="field"><label>Tipo</label><select name="type"><option>Camión</option><option>Maquinaria</option><option>Tractora</option><option>Otro vehículo industrial</option></select></div>
+            <div class="field"><label>Estado</label><select name="condition"><option>Buen estado</option><option>Averiado</option><option>Accidentado</option><option>Fuera de servicio</option></select></div>
+          </div>
+          <div class="field"><label>Marca y modelo</label><input name="model" placeholder="Ej. MAN TGX 18.500"></div>
+          <div class="field"><label>Cuéntanos más</label><textarea name="message" placeholder="Año, kilómetros, ubicación, daños..."></textarea></div>
+          <button class="btn btn-accent" type="submit">Solicitar valoración</button>
+          <div class="success" id="success">¡Solicitud preparada! En una web real este formulario se conectaría a tu email, WhatsApp o CRM.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contacto">
+    <div class="container contact-grid">
+      <div>
+        <div class="eyebrow">Contacto</div><h2>Hablemos de tu próximo vehículo.</h2>
+        <div class="contact-info">
+          <div class="contact-item"><strong>Teléfono</strong><span><a href="tel:+34641075341">+34 641 075 341</a></span></div>
+          <div class="contact-item"><strong>WhatsApp</strong><span><a href="https://wa.me/34624805775" target="_blank" rel="noopener">+34 624 805 775</a></span></div>
+          <div class="contact-item"><strong>Email</strong><span><a href="mailto:marotrucks@gmail.com">marotrucks@gmail.com</a></span></div>
+          <div class="contact-item"><strong>Ubicación</strong><span>Barcelona · Madrid · Valencia · Toda España</span></div>
+        </div>
+      </div>
+      <div class="form-box">
+        <h3>Solicitar información</h3>
+        <form id="contactForm" style="margin-top:18px">
+          <div class="two"><div class="field"><label>Nombre</label><input required placeholder="Tu nombre"></div><div class="field"><label>Email</label><input required type="email" placeholder="tu@email.com"></div></div>
+          <div class="field"><label>Mensaje</label><textarea required placeholder="¿Qué vehículo te interesa?"></textarea></div>
+          <button class="btn btn-dark" type="submit">Enviar consulta</button>
+          <div class="success" id="contactSuccess">¡Mensaje preparado! Conecta este formulario a tu email para recibir consultas reales.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <div>© 2026 MAROTRUCKS. Todos los derechos reservados.</div>
+    <div>Barcelona · Madrid · Valencia · Toda España</div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const success = form.querySelector('.success');
+      if(success){ success.style.display='block'; }
+    });
+  });
+  document.querySelector('.menu').addEventListener('click', () => {
+    const links=document.querySelector('.navlinks');
+    links.style.display = links.style.display==='flex' ? 'none' : 'flex';
+    links.style.position='absolute'; links.style.top='72px'; links.style.left='0'; links.style.right='0';
+    links.style.padding='20px'; links.style.background='#f7f7f5'; links.style.flexDirection='column';
+    links.style.borderBottom='1px solid #e5e5e1';
+  });
+</script>
+
+<a class="floating-wa" href="https://wa.me/34624805775?text=Hola%20MAROTRUCKS,%20quiero%20informacion%20sobre%20un%20camion%20o%20maquinaria." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">💬 WhatsApp</a>
+<script>
+  document.querySelectorAll('.filter').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      document.querySelectorAll('.vehicle').forEach(card => {
+        card.style.display = (f === 'all' || card.dataset.type === f) ? '' : 'none';
+      });
+    });
+  });
+</script>
+</body>
+</html>
